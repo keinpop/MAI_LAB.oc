@@ -1,0 +1,1 @@
+**lab_1** var 8 (stack var 4)  
