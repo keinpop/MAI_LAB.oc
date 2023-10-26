@@ -21,15 +21,15 @@ bool checkPatternStr(std::string string)
 }
 
 int main() {
-
-    std::string stringLine = readString(STDIN_FILENO);
-
-    if (checkPatternStr(stringLine)) {
-        write(STDOUT_FILENO, stringLine.c_str(), stringLine.size() - 1);
-        write(STDERR_FILENO, _USER_ALERT_VALID_OUT, sizeof(char) * _UAVO_SIZE);
-    } else {
-        write(STDERR_FILENO, _USER_ALERT_INVALID_OUT,sizeof(char) * _UAIO_SIZE);
+    std::string stringLine;
+    while (readString(STDIN_FILENO, stringLine) != EOF) {
+        if (checkPatternStr(stringLine)) {
+            write(STDERR_FILENO, stringLine.c_str(), stringLine.size());
+            write(STDOUT_FILENO, _USER_ALERT_VALID_OUT, sizeof(char) * _UAVO_SIZE);
+        } else {
+            write(STDOUT_FILENO, _USER_ALERT_INVALID_OUT,sizeof(char) * _UAIO_SIZE);
+        }
+        stringLine.clear();
     }
-
     return 0;
 }

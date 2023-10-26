@@ -1,19 +1,24 @@
 #include "common.h"
 
-std::string readString(int fd)
+int readString(int fd, std::string & line)
 {
-    char symbol;
-    std::string line;
-    
+    char symbol = ' ';
+       
     while (true) {
-        if (symbol == '\n') 
+        if (symbol == '\n') {
             break;
+        }
+
+        int res = read(fd, &symbol, sizeof(char));
+
+        if (res == 0) {
+            return EOF;
+        }
         
-        read(fd, &symbol, sizeof(char));
         line.push_back(symbol);
     }
-    
-    return line;
+
+    return line.length();
 }
 
 void writeString(int fd, std::string line)

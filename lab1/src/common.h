@@ -21,5 +21,5 @@
 #define _USER_ALERT_VALID_OUT "\tString is valid.\n"
 #define _UAVO_SIZE 19
 
-std::string readString(int fd);
+int readString(int fd, std::string & line);
 void writeString(int fd, std::string line);

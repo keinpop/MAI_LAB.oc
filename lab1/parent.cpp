@@ -30,7 +30,13 @@ int main() {
 
     writeString(STDOUT_FILENO, _USER_ALERT_FILE_INPUT);
 
-    if ((fileFD = open(readString(STDIN_FILENO).c_str(), flags, mode)) < 0) {
+    std::string filename;
+    if (readString(STDIN_FILENO, filename) == EOF) {
+        writeString(STDOUT_FILENO, _USER_ALERT_ERROR_FILE);
+        perror("file");
+    }
+
+    if ((fileFD = open(filename.c_str(), flags, mode)) < 0) {
         writeString(STDOUT_FILENO, _USER_ALERT_ERROR_FILE);
         perror("file");
     }
@@ -48,22 +54,30 @@ int main() {
         
         dup2(pipeFD2[WR], STDOUT_FILENO);
         dup2(pipeFD1[RD], STDIN_FILENO);
-        dup2(fileFD, STDOUT_FILENO);
+        dup2(fileFD, STDERR_FILENO);
 
         execl("child.out", "child.out", NULL);
     } else { // parent process
         close(pipeFD1[RD]);
         close(pipeFD2[WR]);
-
-        std::string input;
         
-        writeString(STDOUT_FILENO, _USER_ALERT_STRING_INPUT);
-        writeString(pipeFD1[WR], readString(STDIN_FILENO));
-        writeString(STDOUT_FILENO, readString(pipeFD2[RD]));
-
+        while (true) {
+            writeString(STDOUT_FILENO, _USER_ALERT_STRING_INPUT);
+            std::string str;
+            if (readString(STDIN_FILENO, str) == EOF) {
+                close(pipeFD1[WR]);
+                break;
+            }
+            writeString(pipeFD1[WR], str);
+            std::string response;
+            
+            readString(pipeFD2[RD], response);
+            writeString(STDOUT_FILENO, response);
+            
+        }
+        
         wait(NULL);
 
-        close(pipeFD1[WR]);
         close(pipeFD2[RD]);
     }
 }
