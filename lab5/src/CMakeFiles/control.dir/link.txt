@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/control.dir/controlNode.cpp.o -o control  -lzmq 

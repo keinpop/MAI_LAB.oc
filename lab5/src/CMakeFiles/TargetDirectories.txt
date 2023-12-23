@@ -1,0 +1,4 @@
+/mnt/c/oc_lab/lab5/src/CMakeFiles/control.dir
+/mnt/c/oc_lab/lab5/src/CMakeFiles/calculationNode.dir
+/mnt/c/oc_lab/lab5/src/CMakeFiles/edit_cache.dir
+/mnt/c/oc_lab/lab5/src/CMakeFiles/rebuild_cache.dir
