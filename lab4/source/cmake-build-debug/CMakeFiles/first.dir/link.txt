@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -shared -Wl,-soname,libfirst.so.0.1.0 -o libfirst.so.0.1.0 CMakeFiles/first.dir/src/realization1.c.o  -lm 

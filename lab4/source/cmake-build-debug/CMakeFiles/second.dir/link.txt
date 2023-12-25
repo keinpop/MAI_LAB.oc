@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -shared -Wl,-soname,libsecond.so.0.1.0 -o libsecond.so.0.1.0 CMakeFiles/second.dir/src/realization2.c.o  -lm 

@@ -1,0 +1,6 @@
+/mnt/c/oc_lab4/source/cmake-build-debug/CMakeFiles/statMain.dir
+/mnt/c/oc_lab4/source/cmake-build-debug/CMakeFiles/dynMain.dir
+/mnt/c/oc_lab4/source/cmake-build-debug/CMakeFiles/first.dir
+/mnt/c/oc_lab4/source/cmake-build-debug/CMakeFiles/second.dir
+/mnt/c/oc_lab4/source/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/c/oc_lab4/source/cmake-build-debug/CMakeFiles/rebuild_cache.dir

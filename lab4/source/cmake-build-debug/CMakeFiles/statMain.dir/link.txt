@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/statMain.dir/src/statMain.c.o -o statMain  -Wl,-rpath,/mnt/c/oc_lab4/source/cmake-build-debug libfirst.so.0.1.0 -lm 
